@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f1e8">
+    <meta name="description" content="以原始诗歌语料探索李白与杜甫之间的作品关联、诗句回声与文本网络。">
+    <title>李白 × 杜甫 — 诗歌回响数字档案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="paper-grain" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="wordmark" href="#home" aria-label="李杜数字档案首页">
+        <span class="wordmark-seal">唐</span>
+        <span>诗歌回响<small>DIGITAL ARCHIVE · 01</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="打开导航" aria-expanded="false">目录 <span>＋</span></button>
+      <nav class="main-nav" id="mainNav" aria-label="主导航">
+        <a href="#home" class="active">序章 <span>01</span></a>
+        <a href="#corpus">语料 <span>02</span></a>
+        <a href="#network">关系网络 <span>03</span></a>
+        <a href="#echoes">诗句回声 <span>04</span></a>
+      </nav>
+      <div class="header-mark">长安 · 盛唐</div>
+    </header>
+
+    <main>
+      <section class="hero section-shell" id="home">
+        <div class="hero-topline"><span>数字人文 · 唐诗语料计划</span><span>LI BAI × DU FU / A TEXTUAL EXPLORATION</span></div>
+        <div class="hero-title-wrap">
+          <div class="hero-title">
+            <p class="eyebrow"><span class="dot dot-blue"></span> TWO POETIC MINDS, COUNTLESS ECHOES</p>
+            <h1>李白<span class="title-cross">×</span><br><span class="title-indent">杜甫</span></h1>
+            <p class="hero-subtitle">两颗诗心，万千回响。</p>
+            <a class="text-link" href="#corpus">进入语料，循迹而行 <span>↘</span></a>
+          </div>
+          <div class="hero-art" aria-label="代表性诗句关联示意">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <span class="orbit-point point-one"></span><span class="orbit-point point-two"></span>
+            <span class="orbit-point point-three"></span><span class="orbit-point point-four"></span>
+            <svg class="orbit-thread" viewBox="0 0 510 390" role="presentation">
+              <path d="M58 284 C127 239 122 101 226 119 S342 302 451 90" />
+              <path d="M74 88 C185 148 282 44 414 307" />
+            </svg>
+            <span class="art-caption">诗句之间<br>亦有星河</span>
+            <div class="poet-stamp stamp-li">李</div>
+            <div class="poet-stamp stamp-du">杜</div>
+            <span class="art-coordinate">30° 34′ N<br>104° 04′ E</span>
+          </div>
+        </div>
+        <div class="hero-verse-grid">
+          <article class="hero-verse verse-li">
+            <div class="verse-label"><span>LI BAI</span><span class="verse-rule"></span><span>李白</span></div>
+            <p id="heroLiLine" class="verse-text">正在读取诗句……</p>
+            <p id="heroLiTitle" class="verse-source"></p>
+          </article>
+          <div class="echo-mark" aria-hidden="true"><span>↔</span><small>TEXTUAL<br>RESONANCE</small></div>
+          <article class="hero-verse verse-du">
+            <div class="verse-label"><span>DU FU</span><span class="verse-rule"></span><span>杜甫</span></div>
+            <p id="heroDuLine" class="verse-text">正在读取诗句……</p>
+            <p id="heroDuTitle" class="verse-source"></p>
+          </article>
+        </div>
+        <div class="hero-footer"><span>以文本为径，重新发现两位诗人的诗歌世界</span><span class="scroll-hint">向下探索 <b>↓</b></span></div>
+      </section>
+
+      <section class="corpus section-shell section-pad" id="corpus">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / THE CORPUS</p><h2>从语料开始，<br><em>看见关联的尺度。</em></h2></div>
+          <p class="section-intro">不是先验的故事，而是从每一行原始诗句出发。让数据告诉我们，诗歌之间有多少交会。</p>
+        </div>
+        <div class="stat-ledger">
+          <article class="stat-item stat-main"><span class="stat-index">A — 关联记录</span><strong id="statRows">—</strong><span>原始诗句对应记录</span></article>
+          <article class="stat-item"><span class="stat-index">B — 作品组合</span><strong id="statPairs">—</strong><span>按双方诗歌 ID 去重</span></article>
+          <article class="stat-item"><span class="stat-index">C — 关联诗句</span><strong id="statLines">—</strong><span>双方诗句序号组合</span></article>
+        </div>
+        <div class="corpus-meta">
+          <p><span class="meta-mark">●</span> 关联作品覆盖率：李白 <b id="coverageLi">—</b> · 杜甫 <b id="coverageDu">—</b></p>
+          <p>覆盖率 = 有关联的作品数 ÷ 对应诗人语料作品总数</p>
+        </div>
+        <div class="corpus-lower">
+          <article class="chart-panel">
+            <div class="chart-heading"><div><p class="eyebrow">01.1 / POEM DEGREE</p><h3>作品关联度分布</h3></div><span class="chart-note">横轴：关联作品数<br>纵轴：作品数量</span></div>
+            <div id="degreeChart" class="chart-area" aria-label="作品关联度分布图"></div>
+            <p class="chart-footnote">每个作品按其连接的不同对方作品数分组。选择柱形可将对应范围带入关系网络。</p>
+          </article>
+          <article class="corpus-comparison">
+            <p class="eyebrow">01.2 / SOURCE MATERIAL</p><h3>两部诗歌语料</h3>
+            <div class="poet-count">
+              <div class="poet-count-label"><span class="poet-name name-li">李白</span><span id="poemCountLi">— 首作品</span></div>
+              <div class="count-track"><span class="count-fill fill-li" id="barLi"></span></div>
+            </div>
+            <div class="poet-count">
+              <div class="poet-count-label"><span class="poet-name name-du">杜甫</span><span id="poemCountDu">— 首作品</span></div>
+              <div class="count-track"><span class="count-fill fill-du" id="barDu"></span></div>
+            </div>
+            <div class="compare-note"><span class="mini-seal">校</span><p>作品按诗歌 ID 计数，不按标题计数；同名作品保留为不同记录。</p></div>
+          </article>
+        </div>
+        <p class="data-caption" id="dataCaption">数据来源：工作区 CSV 原始语料。统计随页面加载实时计算。</p>
+      </section>
+
+      <section class="network-section section-pad" id="network">
+        <div class="section-shell">
+          <div class="section-heading network-heading">
+            <div><p class="eyebrow">02 / THE NETWORK</p><h2>不是两个人，<br><em>而是诗与诗的相逢。</em></h2></div>
+            <p class="section-intro">每一条连线来自 CSV 中真实存在的关联记录。先看作品之间的往来，再放大到具体诗句。</p>
+          </div>
+          <div class="network-controls">
+            <label class="control-search"><span>⌕</span><input id="networkSearch" type="search" placeholder="搜索任一诗名……" autocomplete="off"></label>
+            <label class="select-control"><span>焦点</span><select id="poetFilter" aria-label="按诗人聚焦关系网络"><option value="both">两位诗人</option><option value="li">李白 · 关联优先</option><option value="du">杜甫 · 关联优先</option></select></label>
+            <label class="range-control"><span>至少 <b id="minCountLabel">1</b> 条诗句关联</span><input id="minCount" type="range" min="1" max="6" value="1"></label>
+            <div class="segmented" role="group" aria-label="网络层级"><button class="active" data-level="poem">作品层</button><button data-level="line">诗句层</button></div>
+          </div>
+          <div class="network-layout">
+            <div class="network-frame">
+              <div class="network-legend"><span><i class="legend-dot legend-li"></i>李白作品</span><span><i class="legend-dot legend-du"></i>杜甫作品</span><span class="legend-count">线宽 = 诗句关联数</span></div>
+              <div class="graph-scroll"><svg id="networkGraph" role="img" aria-label="李白与杜甫作品关系网络"></svg></div>
+              <div class="network-status"><span id="networkStatus">正在构建网络……</span><button id="resetView" class="quiet-button">重置视图 ⟳</button></div>
+            </div>
+            <aside class="network-aside">
+              <div class="aside-index">FOCUS / 选中作品</div>
+              <div id="focusPanel" class="focus-panel"><p class="focus-placeholder">点击网络中的作品节点，查看它所关联的诗作。</p></div>
+              <div class="aside-divider"></div>
+              <div class="aside-index">READ THE MAP</div>
+              <p class="aside-copy">节点代表一首作品，外侧圆点是诗人核心节点。连线对应实际诗句关联记录；线越粗，该作品对之间的记录越多。选择单一诗人时，网络聚焦其当前关联量最高的 12 首作品。</p>
+              <p class="aside-copy aside-muted">网络仅展示当前筛选下的局部关系。缩放、拖动图面，或搜索诗名以探索其他连接。</p>
+            </aside>
+          </div>
+          <div class="matrix-panel">
+            <div class="matrix-heading"><div><p class="eyebrow">02.1 / RELATION MATRIX</p><h3>作品关联热力矩阵</h3></div><p>行：李白作品<br>列：杜甫作品<br>数字：原始关联记录数</p></div>
+            <div id="heatmapContainer" class="heatmap-container"><p class="matrix-empty">正在计算作品关联矩阵……</p></div>
+            <p class="chart-footnote">矩阵随上方筛选联动，展示当前筛选下关联记录数最多的双方各 10 首作品。点击非空单元格查看原诗与关联记录。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="echoes section-shell section-pad" id="echoes">
+        <div class="section-heading">
+          <div><p class="eyebrow">03 / POETIC ECHOES</p><h2>循着诗句，<br><em>听见彼此。</em></h2></div>
+          <p class="section-intro">从任意一首诗出发。检索它在另一位诗人作品中留下的文本回声。</p>
+        </div>
+        <div class="echo-search-row">
+          <label class="echo-search"><span class="search-kicker">从哪一首开始</span><input id="echoSearch" type="search" placeholder="输入李白或杜甫的诗名……" autocomplete="off"><span class="search-icon">↵</span></label>
+          <button id="randomExplore" class="outline-button"><span class="random-symbol">✳</span> 随机发现一组诗句</button>
+        </div>
+        <div class="echo-results-head"><span id="echoResultCount">正在索引语料……</span><span>点击任一关联，展开诗句与上下文</span></div>
+        <div id="echoResults" class="echo-results"></div>
+        <div id="echoEmpty" class="empty-state" hidden>没有找到匹配的诗名。试试更短的关键词。</div>
+        <div class="echo-more"><span></span><p>每一次对照都回到原始诗句与序号</p><span></span></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-top"><a class="wordmark footer-wordmark" href="#home"><span class="wordmark-seal">唐</span><span>诗歌回响<small>DIGITAL HUMANITIES · TEXTUAL RELATIONS</small></span></a><a href="#home" class="back-top">回到序章 ↑</a></div>
+      <div class="footer-bottom"><span>基于李白、杜甫诗歌 CSV 原始数据生成</span><span>不推断创作时间、人物交往或未标明的相似度语义</span><span>MADE FOR READING, BUILT FROM DATA</span></div>
+    </footer>
+
+    <dialog id="detailDialog" class="detail-dialog">
+      <button class="dialog-close" id="dialogClose" aria-label="关闭">×</button>
+      <div id="dialogContent"></div>
+    </dialog>
+    <div class="load-error" id="loadError" role="alert" hidden></div>
+    <noscript>本网站需要启用 JavaScript 才能读取并探索诗歌数据。</noscript>
+  </body>
+</html>
